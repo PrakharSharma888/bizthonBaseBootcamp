@@ -6,15 +6,19 @@ function Crowdfund() {
   const [balance, setBalance] = useState(null);
   const [provider, setProvider] = useState(null);
   const [signer, setSigner] = useState(null);
+  const [signer2, setSigner2] = useState(null);
   const [contract, setContract] = useState(null);
+  const [contract2, setContract2] = useState(null) 
   const [yourBalance, setYourBalance] = useState(null)
 
-  const contractAddress = "0x43f6101505BCA7eF2E6bBb330bEb121513E19b99";
+
+  const contractAddress = "0x5D6A7dd379D2b0015CCEE863AB9FeCf8911713C1";
 
   async function main() {
     const accounts = await window.ethereum.request({method: "eth_requestAccounts"})
     console.log(accounts);
     const provider1 = new ethers.BrowserProvider(window.ethereum);
+    console.log(provider1);
     setProvider(provider);
 
     const abi = [
@@ -153,10 +157,14 @@ function Crowdfund() {
       },
     ];
 
-    const signer1 = await provider1.getSigner();
-    console.log("sdsdsdsd",await provider1.listAccounts())
+    const signer1 = await provider1.getSigner(accounts[0]);
+    const signer2 = await provider1.getSigner(accounts[1]);
+    setSigner2(signer2);
+    console.log("sdsdsdsd",signer2)
     setSigner(signer1);
     const crowdFundContract = new ethers.Contract(contractAddress, abi, signer1);
+    const crowdFundContrac2 = new ethers.Contract(contractAddress, abi, signer2);
+    setContract2(crowdFundContrac2)
     setContract(crowdFundContract);
   }
 
@@ -173,7 +181,13 @@ function Crowdfund() {
   }
 
   async function handleSetFund(){
-    const txn = await contract.setFund({value: ethers.parseUnits("0.00001", 18)})
+    const txn = await contract2.setFund({value: ethers.parseUnits("0.00001", 18)})
+    await txn.wait()
+    console.log(txn)
+  }
+
+  async function withdrawAll() {
+    const txn = await contract2.withdrawlAll();
     await txn.wait()
     console.log(txn)
   }
