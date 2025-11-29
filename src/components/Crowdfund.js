@@ -157,22 +157,19 @@ function Crowdfund() {
   }
 
   async function handleBalanceCheck() {
-    const balanceAll = await crowdFundContract.checkAllFunds();
+    const balanceAll = await contract.checkAllFunds();
     setBalance(balanceAll.toString());
     console.log(balanceAll.toString());
-
-    console.log(crowdFundContract);
   }
 
   async function handleYourBalance() {
-    const yourFunds = await crowdFundContract.checkYourFunds();
+    const yourFunds = await contract.checkYourFunds();
     console.log(yourFunds);
   }
 
-  main();
-
   return (
     <>
+    <button onClick={main}>Connect Wallet</button>
       <button onClick={handleBalanceCheck}>Get Balance</button>
       <button onClick={handleYourBalance}>Get Your Balance</button>
       <h1>{balance}</h1>
