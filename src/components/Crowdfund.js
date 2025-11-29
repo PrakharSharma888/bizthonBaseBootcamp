@@ -200,6 +200,7 @@ function Crowdfund() {
       <button onClick={handleBalanceCheck}>Get Balance</button>
       <button onClick={handleYourBalance}>Get Your Balance</button>
       <button onClick={handleSetFund}>Donate the crowdFund</button>
+      <button onClick={withdrawAll}>withdrawAll</button>
       <h1>Total Balance{balance}</h1>
       <h1>Total Balance{yourBalance}</h1>
     </>
