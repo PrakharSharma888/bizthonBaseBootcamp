@@ -211,24 +211,24 @@ function Crowdfund() {
 
   return (
     <>
-      <nav class="navbar bg-body-tertiary">
-        <form class="container-fluid justify-content-start">
+      <nav className="navbar bg-body-tertiary">
+        <form className="container-fluid justify-content-start">
           <button
-            class="btn btn-outline-success me-2"
+            className="btn btn-outline-success me-2"
             onClick={main}
             type="button"
           >
             Connect Wallet
           </button>
           <button
-            class="btn btn-sm btn-outline-secondary m-3"
+            className="btn btn-sm btn-outline-secondary m-3"
             onClick={handleBalanceCheck}
             type="button"
           >
             Get Balance
           </button>
           <button
-            class="btn btn-sm btn-outline-secondary"
+            className="btn btn-sm btn-outline-secondary"
             onClick={handleYourBalance}
             type="button"
           >
@@ -238,16 +238,15 @@ function Crowdfund() {
         </form>
       </nav>
       <div className="position-absolute top-50 start-50 translate-middle">
-        <div class="input-group mb-3 mt-5">
-          <img className="rounded mx-auto d-block" src="./fund.jpg"/>
-          <span class="input-group-text">₹</span>
-
+        <div className="input-group mb-3 mt-5">
+          <img className="img-thumbnail mt-5" src="./fund.jpg"/>
+          <span className="input-group-text">₹</span>
           <input
             type="text"
-            class="form-control"
+            className="form-control"
             aria-label="Amount (to the nearest rupees)"
           />
-          <span class="input-group-text">.00</span>
+          <span className="input-group-text">.00</span>
         </div>
         <button className="btn btn-outline-danger m-3" onClick={handleSetFund}>
           Donate the crowdFund
@@ -256,9 +255,9 @@ function Crowdfund() {
           Withdraw All
         </button>
       </div>
-      <div class="position-absolute top-100 start-50 translate-middle">
-        <h3>Total Balance{balance}</h3>
-        <h3>Your Total Balance{yourBalance}</h3>
+      <div>
+        <p>Total Balance{balance}</p>
+        <p>Your Total Balance{yourBalance}</p>
       </div>
     </>
   );
